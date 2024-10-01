@@ -24,12 +24,12 @@ const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, UPLOAD_DIR);
     },
-    filename: (req, file, cb) => {
+    filename: (req, file, callback) => {
         const now = new Date();
-        const formattedDate = format(now, 'yyyy-MM-dd HH:mm:ss') + ':' + String(now.getMilliseconds()).padStart(3, '0');
+        const formattedDate = format(now, 'yyyy-MM-dd HH:mm:ss').replace(/ /g, '_') + ':' + String(now.getMilliseconds()).padStart(3, '0');
         const sanitizedFilename = sanitize(`${formattedDate}${path.extname(file.originalname)}`);
         
-        cb(null, sanitizedFilename);
+        callback(null, sanitizedFilename);
     }
 });
 
@@ -61,6 +61,11 @@ app.post('/tickets', (req, res) => {
 
         const { name } = req.body;
         const images = req.files.map(file => file.filename);
+
+        console.log("Ticket name is: ", name);
+        images.map(img => {
+            console.log("Img name: ", img);
+        });
 
         return res.status(200).json({ message: 'Ticket uploaded successfully', name, images });
     });
