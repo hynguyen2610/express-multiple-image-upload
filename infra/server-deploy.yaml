@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: file-upload-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: file-upload-server
+  template:
+    metadata:
+      labels:
+        app: file-upload-server
+    spec:
+      containers:
+        - name: file-upload-server
+          image: bluestorm1288/file-upload-server
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: file-upload-server-srv
+spec:
+  selector:
+    app: file-upload-server
+  ports:
+    - name: file-upload-server
+      protocol: TCP
+      port: 4000
+      targetPort: 4000
