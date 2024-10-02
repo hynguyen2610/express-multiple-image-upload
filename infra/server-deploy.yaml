@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: file-upload-server
-          image: bluestorm1288/file-upload-server
+          image: bluestorm1288/file-upload-server:1.0.1
 ---
 apiVersion: v1
 kind: Service

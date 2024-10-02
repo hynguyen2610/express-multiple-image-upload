@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: file-upload-client
-          image: bluestorm1288/file-upload-client:1.0.0
+          image: bluestorm1288/file-upload-client:0.1.5
           env:
             - name: REACT_APP_API_URL
               value: 'http://file-upload-server-srv:4000'
