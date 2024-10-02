@@ -7,6 +7,8 @@ const sanitize = require('sanitize-filename');
 
 const router = express.Router();
 
+const tickets = [];
+
 // Create uploads directory if it doesn't exist
 const UPLOAD_DIR = './uploads';
 if (!fs.existsSync(UPLOAD_DIR)) {
@@ -61,8 +63,15 @@ router.post('/tickets', (req, res) => {
             console.log("Img name: ", img);
         });
 
+        // Append the new ticket to the tickets array
+        tickets.push({ name: name, images: images });
+
         return res.status(200).json({ message: 'Ticket uploaded successfully', name, images });
     });
+});
+
+router.get('/tickets', (req, res) => {
+  return res.status(200).json(tickets);
 });
 
 module.exports = router;

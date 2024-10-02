@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const uploadRouter = require('./routes/uploadRouter'); // Import the router
+const uploadRouter = require('./routes/tickets'); // Import the router
 
 const app = express();
 const PORT = process.env.PORT || 4000; // Use environment variable for port
