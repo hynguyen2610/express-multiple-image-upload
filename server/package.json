@@ -1,9 +1,10 @@
 {
   "name": "file-upload-app",
-  "version": "1.0.1",
+  "version": "1.0.5",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"nodemon server.js\" \"cd client && npm start\"",
+    "start-dev": "concurrently \"nodemon server.js\" \"cd client && npm start\"",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
