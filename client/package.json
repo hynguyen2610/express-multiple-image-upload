@@ -1,6 +1,6 @@
 {
-  "name": "my-file-upload",
-  "version": "0.1.5",
+  "name": "file-upload-client",
+  "version": "0.1.7",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "5.17.0",
