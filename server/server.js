@@ -5,7 +5,12 @@ const uploadRouter = require('./routes/tickets'); // Import the router
 const app = express();
 const PORT = process.env.PORT || 4000; // Use environment variable for port
 
-app.use(cors());
+app.use(cors({
+    origin: '*', // Allow all origins
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allow specific methods or all methods
+    allowedHeaders: ['Content-Type', 'Authorization'], // Specify allowed headers (optional)
+    credentials: true // Set to true if you want to allow credentials (like cookies)
+}));
 app.use(express.json());
 
 // Use the upload router
