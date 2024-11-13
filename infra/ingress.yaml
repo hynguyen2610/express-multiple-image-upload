@@ -1,0 +1,36 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: file-upload-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/proxy-body-size: '8m'
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: '3600'
+    nginx.ingress.kubernetes.io/proxy-read-timeout: '3600'
+    nginx.ingress.kubernetes.io/proxy-send-timeout: '3600'
+spec:
+  rules:
+    - host: myuploader.xyz
+      http:
+        paths:
+          - path: /api/tickets
+            pathType: Prefix
+            backend:
+              service:
+                name: file-upload-server-srv
+                port:
+                  number: 4000
+          - path: /ws # Adjust this path for WebSocket connections
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: file-upload-client-srv
+                port:
+                  number: 3000
+          - path: /client
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: file-upload-client-srv
+                port:
+                  number: 3000
