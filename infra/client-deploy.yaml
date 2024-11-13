@@ -17,7 +17,7 @@ spec:
           image: bluestorm1288/file-upload-client:0.1.5
           env:
             - name: REACT_APP_API_URL
-              value: 'http://file-upload-server-srv:4000'
+              value: 'http://myuploader.xyz'
 ---
 apiVersion: v1
 kind: Service
@@ -43,5 +43,5 @@ spec:
   ports:
     - name: file-upload-client-lb
       protocol: TCP
-      port: 3000
+      port: 5000
       targetPort: 3000

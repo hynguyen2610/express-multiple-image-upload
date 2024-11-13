@@ -18,7 +18,7 @@ function App() {
             formData.append('images', file);
         });
 
-        fetch(`${process.env.REACT_APP_API_URL}/api/tickets`, {
+        fetch(`/api/tickets`, {
             method: 'POST',
             body: formData,
         })
